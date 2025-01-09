@@ -6,7 +6,7 @@ import Home from './components/Home'
 // import Auction from './components/Auction'
 // import NotFound from './components/NotFound'
 import Layout from './components/Layout'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { CacheProvider } from '@emotion/react'
 import createCache from '@emotion/cache'
@@ -27,20 +27,22 @@ const theme = createTheme({
 
 export default function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CacheProvider value={cache}>
-        <div className="App">
-          <CssBaseline />
-          {/* <Header /> */}
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              {/* <Route path="/auctions/:address" element={<Auction />} /> */}
-              {/* <Route path="*" element={<NotFound />} /> */}
-            </Routes>
-          </Layout>
-        </div>
-      </CacheProvider>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <CacheProvider value={cache}>
+          <div className="App">
+            <CssBaseline />
+            {/* <Header /> */}
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                {/* <Route path="/auctions/:address" element={<Auction />} /> */}
+                {/* <Route path="*" element={<NotFound />} /> */}
+              </Routes>
+            </Layout>
+          </div>
+        </CacheProvider>
+      </ThemeProvider>
+    </Router>
   )
 }
