@@ -1,7 +1,7 @@
 import React from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
 
-// import Header from './components/Header'
+import Header from './components/Header'
 import Home from './components/Home'
 // import Auction from './components/Auction'
 // import NotFound from './components/NotFound'
@@ -32,7 +32,7 @@ export default function App() {
         <CacheProvider value={cache}>
           <div className="App">
             <CssBaseline />
-            {/* <Header /> */}
+            <Header />
             <Layout>
               <Routes>
                 <Route path="/" element={<Home />} />
