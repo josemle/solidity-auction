@@ -10,6 +10,7 @@ import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { CacheProvider } from '@emotion/react'
 import createCache from '@emotion/cache'
+import RequireWallet from './components/RequireWallet'
 
 // Configure CSS
 const cache = createCache({
@@ -36,7 +37,11 @@ export default function App() {
             <Layout>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/auctions/:address" element={<Auction />} />
+                <Route path="/auctions/:address" element={
+                  <RequireWallet>
+                    <Auction />
+                  </RequireWallet>
+                } />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Layout>
