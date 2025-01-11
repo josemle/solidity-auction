@@ -26,12 +26,16 @@ export default function BidInput(props) {
     const amount = etherToWei(bidAmount)
 
     const contract = getAuctionContract(web3, contractAddress)
-    
+
+    const price=await web3.eth.getGasPrice()
+    console.log(price)
     await contract.methods
       .placeBid()
       .send({
         value: amount,
-        from: currentAccount
+        from: currentAccount,
+        gas: 210000,
+        gasPrice: price,
       })
       .once('transactionHash', function (hash) {
         console.log('Transaction hash received', hash)
